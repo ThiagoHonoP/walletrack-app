@@ -12,4 +12,15 @@ const signup = (req: Request, res: Response) => {
   }
 };
 
-export default { signup };
+const signin = async (req: Request, res: Response) => {
+  const body = req.body;
+
+  try {
+    const token = await authService.signin(body);
+    return res.status(200).send(token);
+  } catch (error) {
+    return res.status(401).send(error);
+  }
+};
+
+export default { signup, signin };

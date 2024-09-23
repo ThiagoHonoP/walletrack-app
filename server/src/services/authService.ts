@@ -14,6 +14,22 @@ const signup = async (body: ISignupForm) => {
   return authRepository.create({ ...body, password: hashPassword });
 };
 
+const signin = async (body: any) => {
+  const userVerify = await authRepository.findByEmail(body.email);
+
+  if (!userVerify) {
+    return new Error("email or password invalid");
+  }
+
+  const passVerify = bcrypt.compareSync(body.password, userVerify!.password);
+  if (!passVerify) {
+    return new Error("email or password invalid");
+  }
+
+  return authRepository.generateToken(userVerify?._id as string);
+};
+
 export default {
   signup,
+  signin,
 };

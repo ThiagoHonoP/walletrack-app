@@ -11,7 +11,13 @@ const findByEmail = async (email: string) => {
   return user;
 };
 
+const generateToken = async (id: string) => {
+  const idUser = id.toString();
+  return idUser;
+};
+
 export default {
   create,
   findByEmail,
+  generateToken,
 };
