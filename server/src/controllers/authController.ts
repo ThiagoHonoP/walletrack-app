@@ -19,7 +19,7 @@ const signin = async (req: Request, res: Response) => {
     const token = await authService.signin(body);
     return res.status(200).send(token);
   } catch (error) {
-    return res.status(401).send(error);
+    return res.status(401).send("email or password invalid");
   }
 };
 
