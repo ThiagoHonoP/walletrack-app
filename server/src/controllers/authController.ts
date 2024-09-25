@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import authService from "../services/authService";
 
-const signup = (req: Request, res: Response) => {
+const signup = async (req: Request, res: Response) => {
   const body = req.body;
 
   try {
-    const resService = authService.signup(body);
+    const resService = await authService.signup(body);
     return res.status(200).send(resService);
   } catch (error) {
     return res.status(500).send(error);
