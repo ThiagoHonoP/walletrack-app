@@ -4,7 +4,9 @@ import TransactionSchema from "../schemas/Transactions";
 import transactionService from "../services/transactionService";
 
 const create = async (req: Request, res: Response) => {
-  const id = "";
+  const { _id: idUser } = res.locals.user;
+  const id = idUser.toString();
+
   const body = req.body;
 
   try {
@@ -15,4 +17,15 @@ const create = async (req: Request, res: Response) => {
   }
 };
 
-export default { create };
+const findAllByUser = async (req: Request, res: Response) => {
+  const { _id: idUser } = res.locals.user;
+
+  try {
+    const transactions = await transactionService.findAllByUser(idUser);
+    return res.status(200).send(transactions);
+  } catch {
+    return res.status(404).send("Transactions not found");
+  }
+};
+
+export default { create, findAllByUser };

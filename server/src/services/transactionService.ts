@@ -8,6 +8,14 @@ const create = async (body: any, id: string) => {
   return await transactionRepository.create({ ...body, userId: id });
 };
 
+const findAllByUser = async (id: string) => {
+  if (!id) {
+    return [];
+  }
+  return await transactionRepository.findAllByUser(id);
+};
+
 export default {
   create,
+  findAllByUser,
 };

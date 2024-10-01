@@ -12,6 +12,11 @@ const findByEmail = async (email: string) => {
   return user;
 };
 
+const findById = async (id: string) => {
+  const userId = await UserSchema.findById(id);
+  return userId;
+};
+
 const generateToken = async (id: string) => {
   const idUser = id.toString();
 
@@ -21,5 +26,6 @@ const generateToken = async (id: string) => {
 export default {
   create,
   findByEmail,
+  findById,
   generateToken,
 };
