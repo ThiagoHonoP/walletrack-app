@@ -29,7 +29,15 @@ const signin = async (body: any) => {
   return authRepository.generateToken(userVerify?._id as string);
 };
 
+const userLogged = async (id: string) => {
+  const user = await authRepository.findById(id);
+  if (!user) throw new Error("User not found");
+
+  return user;
+};
+
 export default {
   signup,
   signin,
+  userLogged,
 };

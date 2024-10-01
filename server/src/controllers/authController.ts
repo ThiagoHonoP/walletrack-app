@@ -23,4 +23,15 @@ const signin = async (req: Request, res: Response) => {
   }
 };
 
-export default { signup, signin };
+const userLogged = async (req: Request, res: Response) => {
+  const { _id: idUser } = res.locals.user;
+
+  try {
+    const user = await authService.userLogged(idUser);
+    return res.status(200).send(user);
+  } catch (error) {
+    return res.status(404).send("User not found");
+  }
+};
+
+export default { signup, signin, userLogged };
