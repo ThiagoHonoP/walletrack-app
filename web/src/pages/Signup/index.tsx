@@ -1,26 +1,26 @@
-import { Box } from "./components/Box";
-import { PrimaryButton } from "./components/Button";
-import { Input } from "./components/Input";
+import { Link } from "react-router-dom";
+import { Box } from "../../components/Box";
+import { PrimaryButton } from "../../components/Button";
+import { Input } from "../../components/Input";
 
-function App() {
+const Signup = () => {
   return (
-    <main className="flex justify-center items-center h-screen">
+    <main className="bg-teal-300 flex justify-center items-center h-screen">
       <Box>
         <div className="flex justify-between">
           <h1> Signup </h1>
-          <p> img </p>
+          <Link to="/signin"> Voltar </Link>
         </div>
         <form>
           <Input type="text" placeholder="Full name" />
           <Input type="email" placeholder="Enter your email" />
           <Input type="password" placeholder="Enter your password" />
           <Input type="password" placeholder="Confirm password" />
-          <PrimaryButton text="Login" type="submit" />
+          <PrimaryButton text="Signup" type="submit" />
         </form>
-        <p className="text-center"> Don't have account ? Signup </p>
       </Box>
     </main>
   );
-}
+};
 
-export default App;
+export default Signup;
