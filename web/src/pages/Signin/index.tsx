@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box } from "../../components/Box";
 import { PrimaryButton } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signinSchema } from "../../schemas/Signin";
+import { signin } from "../../services/user";
 
 const Signin = () => {
   const {
@@ -15,8 +16,17 @@ const Signin = () => {
     resolver: zodResolver(signinSchema),
   });
 
-  function handleSubmitForm(data: any) {
-    console.log(data);
+  const navigate = useNavigate();
+
+  async function handleSubmitForm(data: any) {
+    try {
+      await signin(data);
+      navigate("/signin");
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err.message);
+      }
+    }
   }
 
   return (
@@ -33,13 +43,14 @@ const Signin = () => {
             placeholder="Enter your email"
             register={register("email")}
           />
-          {errors.email && <span>{errors.root?.message}</span>}
+          {errors.email && <span>{`${errors.email?.message}`}</span>}
           <Input
             name="password"
             type="password"
             placeholder="Enter your password"
             register={register("password")}
           />
+          {errors.password && <span>{`${errors.password?.message}`}</span>}
           <PrimaryButton text="Login" type="submit" />
         </form>
         <Link to="/signup"> Don't have account ? Signup </Link>

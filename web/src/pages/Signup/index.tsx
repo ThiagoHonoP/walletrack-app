@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Box } from "../../components/Box";
 import { PrimaryButton } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signupSchema } from "../../schemas/signup";
+import { signupSchema } from "../../schemas/Signup";
+import { signup } from "../../services/user";
 
 const Signup = () => {
   const {
@@ -15,8 +16,17 @@ const Signup = () => {
     resolver: zodResolver(signupSchema),
   });
 
-  function handleSubmitForm(data: any) {
-    console.log(data);
+  const navigate = useNavigate();
+
+  async function handleSubmitForm(data: any) {
+    try {
+      await signup(data);
+      navigate("/signin");
+    } catch (err) {
+      if (err instanceof Error) {
+        console.log(err.message);
+      }
+    }
   }
 
   return (
@@ -33,29 +43,33 @@ const Signup = () => {
             placeholder="Full name"
             register={register("name")}
           />
-          {errors.name && <span>{errors.name?.message}</span>}
+          {errors.name && <span>{`${errors.name?.message}`}</span>}
           <Input
             name="email"
             type="email"
             placeholder="Enter your email"
             register={register("email")}
           />
-          {errors.email && <span>{errors.email?.message}</span>}
+          {errors.email && <span>{`${errors.email?.message}`}</span>}
+
           <Input
             name="password"
             type="password"
             placeholder="Enter your password"
             register={register("password")}
           />
-          {errors.password && <span>{errors.password?.message}</span>}
+          {errors.password && <span>{`${errors.password?.message}`}</span>}
+
           <Input
             name="confirmPassword"
             type="password"
             placeholder="Confirm password"
+            register={register("confirmPassword")}
           />
           {errors.confirmPassword && (
-            <span>{errors.confirmPassword?.message}</span>
+            <span>{`${errors.confirmPassword?.message}`}</span>
           )}
+
           <PrimaryButton text="Signup" type="submit" />
         </form>
         <Link to="/signin"> Voltar </Link>
