@@ -9,11 +9,13 @@ export const signupSchema = z
     email: z
       .string()
       .min(1, "Email is required")
-      .email("Please enter a valid email address"),
+      .email("Please enter a valid email address")
+      .toLowerCase(),
     password: z
       .string()
       .min(1, "Password is required")
-      .min(8, "Password must be at least 8 characters long"),
+      .min(6, "Password must be at least 6 characters long"),
+    confirmPassword: z.string().min(1, "Confirm password is required"),
   })
   .refine((data: any) => data.password === data.confirmPassword, {
     message: "Passwords do not match",
