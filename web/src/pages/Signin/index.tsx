@@ -6,6 +6,8 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { signinSchema } from "../../schemas/Signin";
 import { signin } from "../../services/user";
+import Cookies from "js-cookie";
+import { useState } from "react";
 
 const Signin = () => {
   const {
@@ -17,13 +19,22 @@ const Signin = () => {
   });
 
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   async function handleSubmitForm(data: any) {
     try {
-      await signin(data);
-      navigate("/signin");
+      setLoading(true);
+      const token = await signin(data);
+
+      console.log(token);
+
+      Cookies.set("token", token, { expires: 1 });
+
+      setLoading(false);
+      navigate("/");
     } catch (err) {
       if (err instanceof Error) {
+        setLoading(false);
         console.log(err.message);
       }
     }
@@ -51,7 +62,11 @@ const Signin = () => {
             register={register("password")}
           />
           {errors.password && <span>{`${errors.password?.message}`}</span>}
-          <PrimaryButton text="Login" type="submit" />
+
+          <PrimaryButton
+            text={loading ? "Loading..." : "Login"}
+            type="submit"
+          />
         </form>
         <Link to="/signup"> Don't have account ? Signup </Link>
       </Box>
