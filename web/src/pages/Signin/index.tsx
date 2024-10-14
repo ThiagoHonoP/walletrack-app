@@ -20,6 +20,7 @@ const Signin = () => {
 
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   async function handleSubmitForm(data: any) {
     try {
@@ -35,6 +36,7 @@ const Signin = () => {
     } catch (err) {
       if (err instanceof Error) {
         setLoading(false);
+        setError(err.message);
         console.log(err.message);
       }
     }
@@ -62,7 +64,7 @@ const Signin = () => {
             register={register("password")}
           />
           {errors.password && <span>{`${errors.password?.message}`}</span>}
-
+          {error && <span>{error}</span>}
           <PrimaryButton
             text={loading ? "Loading..." : "Login"}
             type="submit"

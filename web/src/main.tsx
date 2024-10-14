@@ -4,6 +4,8 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
+import Main from "./pages/Main";
+import { Modal } from "./components/Modal";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +15,16 @@ const router = createBrowserRouter([
   {
     path: "/signup",
     element: <Signup />,
+  },
+  {
+    path: "/",
+    element: <Main />,
+    children: [
+      {
+        path: "/transaction/:id",
+        element: <Modal />,
+      },
+    ],
   },
 ]);
 
