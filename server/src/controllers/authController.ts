@@ -17,6 +17,8 @@ const signin = async (req: Request, res: Response) => {
 
   try {
     const token = await authService.signin(body);
+    if (JSON.stringify(token) === "{}")
+      return res.status(401).send("email or password invalid...");
     return res.status(200).send(token);
   } catch (error) {
     return res.status(401).send("email or password invalid");
