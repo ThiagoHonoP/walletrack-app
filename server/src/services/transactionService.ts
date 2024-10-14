@@ -15,7 +15,15 @@ const findAllByUser = async (id: string) => {
   return await transactionRepository.findAllByUser(id);
 };
 
+const findById = async (id: string) => {
+  if (!id) {
+    return [];
+  }
+  return await transactionRepository.findById(id);
+};
+
 export default {
   create,
   findAllByUser,
+  findById,
 };

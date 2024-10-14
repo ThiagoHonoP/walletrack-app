@@ -10,4 +10,6 @@ transactionRouter.post("/transactions", transactionController.create);
 
 transactionRouter.get("/transactions", transactionController.findAllByUser);
 
+transactionRouter.get("/transactions/:id", transactionController.findById);
+
 export default transactionRouter;

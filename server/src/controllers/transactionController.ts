@@ -28,4 +28,14 @@ const findAllByUser = async (req: Request, res: Response) => {
   }
 };
 
-export default { create, findAllByUser };
+const findById = async (req: Request, res: Response) => {
+  const { id } = req.params;
+  try {
+    const transaction = await transactionService.findById(id);
+    return res.status(200).send(transaction);
+  } catch (error) {
+    return res.status(404).send("Transaction not found");
+  }
+};
+
+export default { create, findAllByUser, findById };
