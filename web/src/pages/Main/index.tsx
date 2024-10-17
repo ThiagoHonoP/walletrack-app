@@ -6,12 +6,15 @@ import { Header } from "../../components/Header";
 import { getTransactions } from "../../services/transactions";
 import { ArrowRight } from "../../assets/ArrowRight";
 import { PrimaryButton } from "../../components/Button";
+import NewTransaction from "../../components/NewTransaction";
 
 const Main = () => {
   const navigate = useNavigate();
 
   const [user, setUser] = useState({});
   const [transactions, setTransactions] = useState([]);
+
+  const [open, setOpen] = useState(false);
 
   async function getAllTransactions() {
     try {
@@ -54,6 +57,10 @@ const Main = () => {
       }
     }
   }
+
+  function handleCloseModal() {
+    setOpen(true);
+  }
   useEffect(() => {
     validateToken();
     getUserLogged();
@@ -70,29 +77,39 @@ const Main = () => {
         </div>
       </Header>
       <div className="w-full max-w-[960px] bg-white border-2 border-black mx-auto mt-6 p-4">
-        <h1> Saldo </h1>
+        <h1> Saldo: 00,00 </h1>
         <div className="flex justify-between gap-x-5">
-          <PrimaryButton text="Entradas" type="button" />
-          <PrimaryButton text="Saidas" type="button" />
+          <PrimaryButton
+            text="Entradas"
+            type="button"
+            handleClick={handleCloseModal}
+          />
+          <PrimaryButton
+            text="Saidas"
+            type="button"
+            handleClick={handleCloseModal}
+          />
         </div>
         <div>
           {transactions.length ? (
             <ul>
               {transactions.map((transaction: any) => (
                 <li key={transaction._id}>
-                  <div className="flex justify-between items-center border-2 border-black mt-4">
-                    <div className="flex items-center gap-4">
-                      <span> Icon </span>
+                  <Link to={`/transaction/${transaction._id}`}>
+                    <div className="flex justify-between items-center border-2 border-black mt-4">
+                      <div className="flex items-center gap-4">
+                        <span> Icon </span>
+                        <div>
+                          <h1>{transaction.description}</h1>
+                          <p> {transaction.value} </p>
+                          <p> {transaction.created_at} </p>
+                        </div>
+                      </div>
                       <div>
-                        <h1>{transaction.description}</h1>
-                        <p> {transaction.value} </p>
-                        <p> {transaction.created_at} </p>
+                        <ArrowRight />
                       </div>
                     </div>
-                    <div>
-                      <ArrowRight />
-                    </div>
-                  </div>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -102,6 +119,9 @@ const Main = () => {
         </div>
       </div>
       <Outlet />
+      {open && (
+        <NewTransaction handleClick={() => setOpen(false)} setOpen={setOpen} />
+      )}
     </div>
   );
 };

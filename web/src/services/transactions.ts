@@ -11,3 +11,23 @@ export const getTransactions = async () => {
 
   return response.data;
 };
+
+export const createTransaction = async (data: any) => {
+  const response = await axios.post(`${BASE_URL}/transactions`, data, {
+    headers: {
+      Authorization: `Bearer ${Cookies.get("token")}`,
+    },
+  });
+
+  return response;
+};
+
+export const getTransactionById = async (id: string) => {
+  const response = await axios.get(`${BASE_URL}/transactions/${id}`, {
+    headers: {
+      Authorization: `Bearer ${Cookies.get("token")}`,
+    },
+  });
+
+  return response.data;
+};
