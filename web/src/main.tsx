@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signin from "./pages/Signin";
 import Signup from "./pages/Signup";
 import Main from "./pages/Main";
-import { Modal } from "./components/Modal";
+import ViewTransaction from "./components/ViewTransaction";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/transaction/:id",
-        element: <Modal />,
+        element: <ViewTransaction maxWidth={100} />,
       },
     ],
   },
