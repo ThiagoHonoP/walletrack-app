@@ -27,8 +27,6 @@ const Signin = () => {
       setLoading(true);
       const token = await signin(data);
 
-      console.log(token);
-
       Cookies.set("token", token, { expires: 1 });
 
       setLoading(false);
