@@ -40,4 +40,4 @@
 
 ---
 
-![Demonstração](src/assets/walletrackapp.gif)
+![Demonstração]([src/assets/walletrackapp.gif](https://raw.githubusercontent.com/ThiagoHonoP/walletrack-app/1635999e965ed8bfecbc8c7e22e6dcff4f6b3096/web/src/assets/walletrackapp.gif))
