@@ -39,10 +39,3 @@
 - Bcrypt para criptografia de senhas
 
 ---
-<p align="center">
-  <img src="https://i.imgur.com/fgdFzrq.gif" alt="Demo" />
-</p>
-
-![Demo](https://i.imgur.com/fgdFzrq.gif)
-![Alt text](https://i.imgur.com/fgdFzrq.gif)
-https://i.imgur.com/fgdFzrq.gif
