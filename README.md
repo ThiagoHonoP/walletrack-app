@@ -39,3 +39,5 @@
 - Bcrypt para criptografia de senhas
 
 ---
+
+![Demonstração](src/assets/walletrackapp.gif)
