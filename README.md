@@ -28,8 +28,8 @@
 **Front-end:**
 - React
 - Axios
-- Context API / Redux (opcional)
-- TailwindCSS ou Styled Components
+- Context API
+- TailwindCSS
 
 **Back-end:**
 - Node.js
