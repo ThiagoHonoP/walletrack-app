@@ -1,6 +1,6 @@
 # 💸 Walletrack App
 
-<p> Aplicativo de controle financeiro pessoal construído com a MERN stack.  Permite ao usuário registrar, visualizar e gerenciar </br> suas transações financeiras de forma simples e segura. </p>
+<p> Aplicativo de controle financeiro pessoal construído com a MERN stack.  Permite ao usuário registrar, visualizar e gerenciar suas transações financeiras de forma simples e segura. </p>
 
 | Item         | Descrição                                                                 |
 |--------------|---------------------------------------------------------------------------|
