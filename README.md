@@ -43,6 +43,6 @@
   <img src="https://i.imgur.com/fgdFzrq.gif" alt="Demo" />
 </p>
 
-![Demo]([assets/demo.gif](https://i.imgur.com/fgdFzrq.gif))
+![Demo](https://i.imgur.com/fgdFzrq.gif)
 ![Alt text](https://i.imgur.com/fgdFzrq.gif)
 https://i.imgur.com/fgdFzrq.gif
