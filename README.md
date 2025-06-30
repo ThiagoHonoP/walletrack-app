@@ -1,13 +1,40 @@
-<h1 align="center">Walletrack App</h1>
+# 💸 Walletrack App
 
-<p align="center">Aplicação fullstack para gestão financeira pessoal, construída com a MERN Stack como projeto prático</p>
+<p> Aplicativo de controle financeiro pessoal construído com a MERN stack.  Permite ao usuário registrar, visualizar e gerenciar</br> suas transações financeiras de forma simples e segura. </p>
 
-<p align="center"> 
-  
 | Item         | Descrição                                                                 |
 |--------------|---------------------------------------------------------------------------|
 | ✨ **Nome**       | Walletrack - Aplicativo de gestão financeira pessoal               |
 | 🏷️ **Tecnologias** | Typescript, Nodejs,  Reactjs, React-Router e Tailwind                 |
 | 🚀 **URL**        |                         |
 | 🔥 **Desafio**    | Aplicativo para registro e acompanhamento de gastos e receitas do usuário |
-</p>
+
+
+---
+
+## 🚀 Funcionalidades
+
+- ✅ Cadastro de usuário
+- 🔐 Login com autenticação JWT
+- ➕ Adicionar transações (receitas ou despesas)
+- ❌ Remover transações
+- 📊 Visualização das transações por tipo e saldo total
+- 🔄 Atualização em tempo real das transações do usuário
+
+---
+
+## 🧱 Tecnologias Utilizadas
+
+**Front-end:**
+- React
+- Axios
+- Context API / Redux (opcional)
+- TailwindCSS ou Styled Components
+
+**Back-end:**
+- Node.js
+- Express
+- MongoDB com Mongoose
+- JSON Web Token (JWT)
+- Bcrypt para criptografia de senhas
+
