@@ -10,6 +10,9 @@
 | 🔥 **Desafio**    | Aplicativo para registro e acompanhamento de gastos e receitas do usuário |
 
 
+![Gif aleatório](https://i.imgur.com/OLekPJQ.gif)
+<img src="https://i.imgur.com/OLekPJQ.gif" alt="Demo" width="400" />
+
 ---
 
 ## 🚀 Funcionalidades
