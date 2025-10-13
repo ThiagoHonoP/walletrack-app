@@ -15,7 +15,7 @@
 
 
 
-https://github.com/ThiagoHonoP/walletrack-app/assets/e65005a1-1401-4478-bbdf-abdd1ab0c392/WalletrackApp - Carteira-Digital.mp4
+https://github.com/ThiagoHonoP/walletrack-app/assets/e65005a1-1401-4478-bbdf-abdd1ab0c392/WalletrackApp.mp4
 
 
 ---
